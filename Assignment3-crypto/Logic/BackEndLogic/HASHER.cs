@@ -27,7 +27,7 @@ namespace Assignment3_crypto.Logic.BackEndLogic
         {
             var formerSize = Convert.ToString(rawText.Length, 2);
             while (formerSize.Length < 128)
-                formerSize = formerSize.Insert(0, "1");
+                formerSize = formerSize.Insert(0, "0");
             paddedText += formerSize;
             return paddedText;
         }
@@ -44,6 +44,21 @@ namespace Assignment3_crypto.Logic.BackEndLogic
             buffer[6] = "0001111110000011110110011010101111111011010000011011110100000000";
             buffer[7] = "0101101111100000110011010001100100010011011111100010000000000000";
             return buffer;
+        }
+
+        #endregion
+
+        #region IBlock Members
+
+
+        public string[] SplitIntoBlock(string rawText)
+        {
+            var blocks = new List<string>();
+            for (int i = 0; i < rawText.Length; i+=1024)
+            {
+                blocks.Add(rawText.Substring(i, 1024));
+            }
+            return blocks.ToArray();
         }
 
         #endregion

@@ -25,5 +25,16 @@ namespace Tests
             var appendedMessage = hasher.AppendLength(bins, expandedBins);
             Assert.IsTrue(appendedMessage.Length == (expandedBins.Length + 128));
         }
+
+        [Test]
+        public void Split2048BitString_ExpectTwoBlocks()
+        {
+            var hasher = new Hasher();
+            var bins = "1100111100001111000011110000111100001111000011110000111100001111";
+            var expandedBins = hasher.AddendPadding(bins);
+            var appendedMessage = hasher.AppendLength(bins, expandedBins);
+            var blocks = hasher.SplitIntoBlock(appendedMessage + appendedMessage);
+            Assert.IsTrue(blocks.Length == 2);
+        }
     }
 }

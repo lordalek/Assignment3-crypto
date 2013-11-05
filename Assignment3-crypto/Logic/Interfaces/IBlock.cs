@@ -12,5 +12,6 @@ namespace Assignment3_crypto.Logic.Interfaces
         string AddendPadding(string rawText);
         string AppendLength(string rawText, string paddedText);
         string[] GetHashBuffer();
+        string[] SplitIntoBlock(string rawText);
     }
 }
