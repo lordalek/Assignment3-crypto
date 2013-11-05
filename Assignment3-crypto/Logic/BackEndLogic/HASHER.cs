@@ -8,18 +8,28 @@ using System.Numerics;
 
 namespace Assignment3_crypto.Logic.BackEndLogic
 {
-  public  class Hasher : IBlock
+    public class Hasher : IBlock
     {
         #region IBlock Members
 
-        public string AddendPadding(string rawText, int paddingLength)
+        public string AddendPadding(string rawText)
         {
-            throw new NotImplementedException();
+            rawText = rawText.Insert(0, "1");
+            while (rawText.Length % 1024 != 896)
+            {
+                rawText = rawText.Insert(1, "0");
+            }
+
+            return rawText;
         }
 
-        public string AppendLength(string rawTest)
+        public string AppendLength(string rawText, string paddedText)
         {
-            throw new NotImplementedException();
+            var formerSize = Convert.ToString(rawText.Length, 2);
+            while (formerSize.Length < 128)
+                formerSize = formerSize.Insert(0, "1");
+            paddedText += formerSize;
+            return paddedText;
         }
 
         public string[] GetHashBuffer()
