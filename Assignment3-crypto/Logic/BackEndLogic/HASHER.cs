@@ -46,11 +46,6 @@ namespace Assignment3_crypto.Logic.BackEndLogic
             return buffer;
         }
 
-        #endregion
-
-        #region IBlock Members
-
-
         public string[] SplitIntoBlock(string rawText)
         {
             var blocks = new List<string>();
@@ -62,5 +57,7 @@ namespace Assignment3_crypto.Logic.BackEndLogic
         }
 
         #endregion
+
+       
     }
 }
