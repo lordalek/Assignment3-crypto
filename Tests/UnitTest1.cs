@@ -36,5 +36,19 @@ namespace Tests
             var blocks = hasher.SplitIntoBlock(appendedMessage + appendedMessage);
             Assert.IsTrue(blocks.Length == 2);
         }
+
+        [Test]
+        public void XOR_1010_with_1000_expect_0111()
+        {
+            var hasher = new Hasher();
+            Assert.AreEqual(hasher.XOR("1010", "1000"), "0010");
+        }
+
+        [Test]
+        public void XOR_10101111_with_10001010_expect_0111()
+        {
+            var hasher = new Hasher();
+            Assert.AreEqual(hasher.XOR("10101111", "10001010"), "00100101");
+        }
     }
 }

@@ -56,8 +56,28 @@ namespace Assignment3_crypto.Logic.BackEndLogic
             return blocks.ToArray();
         }
 
-        #endregion
+        public string CompressThreeFactors(string factor1, string factor2, string factor3)
+        {
+            throw new NotImplementedException();
+        }
 
-       
+        public string XOR(string string1, string string2)
+        {
+            if(string1.Length != string2.Length)
+                throw new ArithmeticException("Cannot XOR. Input lengths are not equal");
+            var sb = new StringBuilder();
+            for (int i = 0; i < string1.Length; i++)
+            {
+                sb.Append(string1[i].Equals(string2[i]) ? "0" : "1");
+            }
+            return sb.ToString();
+        }
+
+        public string FlipBinaries(string rawBinary)
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }
