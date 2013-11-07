@@ -58,7 +58,9 @@ namespace Assignment3_crypto.Logic.BackEndLogic
 
         public string CompressThreeFactors(string factor1, string factor2, string factor3)
         {
-            throw new NotImplementedException();
+            var part1 = factor1 + factor2;
+            var part2 = FlipBinaries(factor1) + factor3;
+            return XOR(part1, part2);
         }
 
         public string XOR(string string1, string string2)
@@ -75,7 +77,12 @@ namespace Assignment3_crypto.Logic.BackEndLogic
 
         public string FlipBinaries(string rawBinary)
         {
-            throw new NotImplementedException();
+            var sb = new StringBuilder();
+            for (int i = 0; i < rawBinary.Length; i++)
+            {
+                sb.Append(rawBinary[i].Equals('0') ? "1" : "0");
+            }
+            return sb.ToString();
         }
 
         #endregion

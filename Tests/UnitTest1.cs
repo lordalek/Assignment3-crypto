@@ -50,5 +50,23 @@ namespace Tests
             var hasher = new Hasher();
             Assert.AreEqual(hasher.XOR("10101111", "10001010"), "00100101");
         }
+
+        [Test]
+        public void FLIP_1001_EXPECT_0110()
+        {
+            var hasher = new Hasher();
+            Assert.AreEqual("0110", hasher.FlipBinaries("1001"));
+        }
+
+        [Test]
+        public void Compress_1100_0101_0010()
+        {
+            var hasher = new Hasher();
+            var compressed = hasher.CompressThreeFactors("1100", "0101", "0010");
+            var a = "11000101";
+            var b = "00110010";
+            var xor = hasher.XOR(a, b);
+            Assert.AreEqual(xor, compressed);
+        }
     }
 }
